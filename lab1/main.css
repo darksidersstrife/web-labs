@@ -1,0 +1,62 @@
+.header
+{
+    margin-bottom: 4px;
+    background-color: red;
+    
+}
+
+.one
+{
+    position: relative;
+	width: 49%;
+    left: 0;
+    height: 600px;
+    display: inline-block;
+    margin-left: 1%;
+    background-color: black
+}
+
+.two
+{
+	width: 49%;
+    position: relative; 
+    right: 0;
+    height: 600px;
+    display: inline-block;
+    margin: 0;
+    
+    background-color: blueviolet
+}
+.all
+{
+    width: 100%;
+    display: inline-block;
+}
+.footer
+{
+    background-color: aqua;
+}
+@media (max-width: 700px)
+{
+    .all
+    {
+        display: block;
+
+    }
+    .two
+    {
+        width: 98%;
+        position: relative;
+        margin-left: 1%;  
+        margin-top: -15px;      
+        display: block;
+    }
+    .one
+    {
+        display: block;
+        width: 98%;
+        position: relative;
+        left: 0;
+        margin-top: -15px;
+    }
+}
