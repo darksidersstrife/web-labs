@@ -46,9 +46,16 @@
 						context.fillText(lines_array[i], canvas.width / 2, height);
 						height += lineHeight;
 					}
+					var save_button = document.createElement("button");
+					body.appendChild(save_button);
+					save_button.onclick = function() {
+						this.href =  canvas.toDataURL();
+					}
 				}
 			}
 			im_arr[i].src = 'https://source.unsplash.com/collection/1127163/' + im_sizes[i].x + "x" + im_sizes[i].y;
+			im_arr[i].crossorigin = 'anonymous';
+			console.log(im_arr[i]);
 		};
 	}
 </script>
