@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <head>
 	<meta charset="utf-8">
 </head>
@@ -10,6 +12,7 @@
 		body.appendChild(canvas);
 		canvas.width = 500;
 		canvas.height = 500;
+		canvas.style.display = "block";
 		var point = { x : Math.round(Math.random()*300 + 100), y : Math.round(Math.random()*300 + 100)};
 		var im_arr = [new Image(), new Image(), new Image(), new Image()];
 		var im_sizes = [ {x : point.x, y : point.y}, {x : point.x, y : (500 - point.y)}, { x : (500 - point.x), y : point.y}, {x : (500 - point.x), y : 500 - point.y}]
@@ -40,23 +43,29 @@
 					}
 					lines_array.push(line_quote);
 					console.log(lines_array);
-					var lineHeight = 20;
+					var lineHeight = 30;
 					var height = canvas.height / 2 - (lines_array.length - 1) / 2 * lineHeight
 					for(var i = 0; i < lines_array.length; i++) {
 						context.fillText(lines_array[i], canvas.width / 2, height);
 						height += lineHeight;
 					}
 					var save_button = document.createElement("button");
+					save_button.textContent ="Download";
 					body.appendChild(save_button);
 					save_button.onclick = function() {
-						this.href =  canvas.toDataURL();
+						var link = document.createElement("a");
+						link.href = canvas.toDataURL();
+						link.download="image.png";
+						link.click();
 					}
 				}
 			}
-			im_arr[i].src = 'https://source.unsplash.com/collection/1127163/' + im_sizes[i].x + "x" + im_sizes[i].y;
-			im_arr[i].crossorigin = 'anonymous';
-			console.log(im_arr[i]);
+			im_arr[i].src = 'https://source.unsplash.com/collection/1127153/' + im_sizes[i].x + "x" + im_sizes[i].y;
+			im_arr[i].crossOrigin = 'anonymous';
 		};
 	}
+	
+	
 </script>
 <script src="https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote"></script>
+</html>
