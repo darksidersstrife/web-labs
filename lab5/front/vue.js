@@ -40,7 +40,7 @@ var md = new Vue({
                 })
         },
         newFile: function () {
-            fetch('http://localhost:8000/',{
+            fetch('http://localhost:8000/create',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'
@@ -52,7 +52,7 @@ var md = new Vue({
             }).then(res => res.json())
                 .then((id)=>{
                     this.id = id;
-                    this.files.push({'id' : id, 'title' : this.name})
+                    this.files.push({'_id' : id, 'title' : this.name})
                 })
         },
         updateFile: function () {
@@ -65,6 +65,20 @@ var md = new Vue({
                     'name' : this.name,
                     'text' : this.text,
                     'id' : this.id,
+                })
+            })
+        },
+        deleteFile : function (id, index) {
+            if(id == this.id)
+                this.id = null;
+            this.files.splice(index, 1);
+            fetch('http://localhost:8000/delete',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body : JSON.stringify({
+                    'id' : id
                 })
             })
         }

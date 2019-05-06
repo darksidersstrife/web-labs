@@ -9,6 +9,6 @@ module.exports = function (app) {
                 res.json(result)
             });
         });
-        //res.send('возможно')
+        console.log('get file')
     });
 };

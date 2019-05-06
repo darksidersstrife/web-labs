@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectID;
 const dbconfig = require('../config/db');
 
 module.exports = function (app) {
-    app.post('/', function (req, res) {
+    app.post('/create', function (req, res) {
         MongoClient.connect(dbconfig.url, dbconfig.options, function (err, connection) {
             connection.db('lab5').collection('MDdocs').insertOne({title : req.body.name, text : req.body.text}, function(err, result) {
                 res.json(result.insertedId)

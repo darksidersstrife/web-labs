@@ -15,9 +15,10 @@
   <div v-cloak v-if="files.length != 0">
 	<h1>Documents</h1>
 	<ul>
-	  <div v-for="file in files">
+	  <div v-for="(file, key) in files">
 		<li>{{ file.title }}</li>
 		<button @click="openFile(file._id)">Open file</button>
+        <button @click="deleteFile(file._id, key)">Delete file</button>
 	  </div>
 	</ul>
   </div>
